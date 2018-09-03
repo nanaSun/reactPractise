@@ -50,4 +50,3 @@ let element=React.createElement(
 
 知道了这个对象的结构，我们可以尝试一波，自己写一个`render`替代`ReactDOM.render`，把这个节点写到页面上。
 
-
