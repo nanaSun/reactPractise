@@ -1,4 +1,4 @@
-#学习React从接受JSX开始
+# 学习React从接受JSX开始
 
 >虽然JSX是扩展到ECMAScript的类XML语法，但是它本身并没有定义任何语义。也就是说它本身不在ECMAScript标准范围之内。它也不会被引擎或者浏览器直接执行。通常会利用很编译器预处理器来将这些JSX转化为标准的ECMAScript。
 
@@ -35,7 +35,9 @@ let element=React.createElement(
   "A爆了"
 )
 ```
+
 那么是不是我直接`let {type,props,children}=element`就可以得到 `h1`、`{className:"aaa"}`和`A爆了`了呢？我还是太天真了。`type`确实是`h1`，但是`props`打出来是`{className: "aaa", children: "A爆了"}`。咦？怎么`children`混在了这里，那么后面得children呢？毫无疑问`undefined`。也就是说一个`React.createElement`或者JSX的对象的结构是这样的：
+
 ```
 {
     type:"h1",
@@ -45,4 +47,7 @@ let element=React.createElement(
     }
 }
 ```
+
+知道了这个对象的结构，我们可以尝试一波，自己写一个`render`替代`ReactDOM.render`，把这个节点写到页面上。
+
 
