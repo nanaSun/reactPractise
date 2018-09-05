@@ -43,6 +43,14 @@ class App extends Component {
 export default App;
 ```
 
-这个`class`版本的组件和上方纯方法的组件，从React的角度上来说，并无不同，但是！毕竟我`class`的方式还继承了`React.Component`，不多点小功能都说不过去对吧？所以说我们这么想继承了`React.Component`的组件的初始功能要比纯方法return的要多。
+这个`class`版本的组件和上方纯方法的组件，从React的角度上来说，并无不同，但是！毕竟我`class`的方式还继承了`React.Component`，不多点小功能都说不过去对吧？所以说我们这么想继承了`React.Component`的组件的初始功能要比纯方法return的要多。所以每个React的`Component`我们都可以当作React元素直接使用。
 
-分析了Component之后，大家有没有发现Component的一个局限？没错！就是传参！关于Component的一个定义就是，只能传入`props`的参数。也就是说所有的沟通都要在这个`props`中进行。有种探监的既视感，只能在规定的窗口，拿着对讲机聊天，以他方式无法沟通。
+分析了Component之后，大家有没有发现Component的一个局限？没错！就是传参！关于Component的一个定义就是，只能传入`props`的参数。也就是说所有的沟通都要在这个`props`中进行。有种探监的既视感，只能在规定的窗口，拿着对讲机聊天，其他的方式无法沟通。React对于`props`有着苛刻的规定。
+
+> All React components must act like pure functions with respect to their props.
+
+简单地来说就是`props`是不能被改变的，是只读的。
+
+这里需要科普下`纯函数pure function`的概念，之后Redux也会遇到的。意思就是纯函数只是一个过程，期间不改变任何对象的值。因为JS的对象有个很奇怪的现象。如果你传入一个对象到这个方法中，并且改变了他某属性的值，那么传入的这个对象在函数外也会改变。`pure function`就是你的改动不能对函数作用域外的对象产生影响。所以每次我们在Component里面会遇到一个新的对象`state`，一般这个组件的数据我们会通过`state`在当前组件中进行变化处理。
+
+> 划重点：因为JS的特性，所以`props`设置为只读，是为了不污染全局的作用域。这样很大程度上保证了`Component`的独立性。相当于一个`Component`就是一个小世界。
